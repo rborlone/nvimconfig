@@ -45,6 +45,37 @@ El explorador de archivos (`Ctrl+B`) requiere el extra
 `lazyvim.plugins.extras.editor.snacks_explorer` (ya habilitado en
 `lazyvim.json`); si `nvim` pide sincronizar plugins nuevos, correr `:Lazy sync`.
 
+## Comparar commits (diffview.nvim)
+
+Se agregó [diffview.nvim](https://github.com/sindrets/diffview.nvim)
+(`lua/plugins/diffview.lua`) para comparar commits, branches y ver el
+historial de un archivo directamente en Neovim.
+
+| Comando | Acción |
+|---|---|
+| `:DiffviewOpen` | Muestra los cambios sin commitear (working tree vs HEAD) |
+| `:DiffviewOpen <commit1>..<commit2>` | Compara dos commits/branches específicos |
+| `:DiffviewOpen HEAD~3` | Compara contra un commit relativo (3 commits atrás) |
+| `:DiffviewFileHistory %` | Historial de cambios del archivo actual |
+| `:DiffviewFileHistory` | Historial de cambios de todo el repo |
+| `:DiffviewClose` | Cierra la vista de diff |
+
+Dentro de la vista de diff:
+
+- El panel izquierdo lista los archivos cambiados; `Enter` o `<CR>` abre el
+  diff del archivo seleccionado.
+- `]c` / `[c` — saltar al siguiente/anterior cambio dentro del archivo.
+- `<leader>e` — alternar el panel de archivos.
+
+En el panel de archivos (izquierda), con el cursor sobre un archivo:
+
+| Tecla | Acción |
+|---|---|
+| `-` | Stage / unstage el archivo seleccionado |
+| `S` | Stage todos los archivos |
+| `U` | Unstage todos los archivos |
+| `X` | Descartar cambios del archivo seleccionado (restore) |
+
 ## Notas
 
 - No se versiona `~/.local/share/nvim` (plugins instalados) ni
